@@ -91,7 +91,7 @@ To run tests, run a live server on your computer..
 
 ### Deployment
 
-You can deploy this project in this link by <a href="https://github.com/faisalakb/TodoList">click</a>
+You can deploy this project by using git clone "https://github.com/faisalakb/TodoList"  <a href="https://github.com/faisalakb/TodoList">Link</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
