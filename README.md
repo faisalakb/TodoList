@@ -1,6 +1,5 @@
-Hello, I am:
 
-- Faisal Mumtaz
+- Project Title: Todo List
 
 <a name="readme-top"></a>
 
@@ -114,7 +113,9 @@ You can deploy this project in this link by <a href="https://github.com/faisalak
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **About Page**
+- [ ] **Add Remove items**
+- [ ] **with single remove all list**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- CONTRIBUTING -->
