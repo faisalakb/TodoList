@@ -55,7 +55,7 @@ GitHub & Visual Studio Code
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](<a href="https://github.com/faisalakb/TodoList"></a>)
+- [Live Demo coming soon]
 
 <p align="right">(<a href="https://github.com/faisalakb/TodoList">back to top</a>)</p>
 
