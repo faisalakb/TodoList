@@ -91,7 +91,7 @@ To run tests, run a live server on your computer..
 
 ### Deployment
 
-Deployed soon...
+To be deployed soon.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
