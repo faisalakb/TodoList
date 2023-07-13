@@ -66,42 +66,42 @@ const display = () => {
     if (divItem) { // Add a null check before adding the event listener
       divItem.addEventListener('click', (event) => {
         const liTag = event.target.parentElement.querySelector('li');
-        if(liTag){
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.classList.add('dynInp');
-        input.value = liTag.textContent;
-        input.addEventListener('keyup', (e) => {
-          if (e.key === 'Enter') {
-            liTag.textContent = input.value;
-            const index = parseInt(liTag.getAttribute('data-index'), 10);
-            const itemToUpdate = itemData.find((element) => element.index === index);
-            itemToUpdate.description = input.value;
-            localStorage.setItem('todoListItems', JSON.stringify(itemData));
-          }
-        });
-        liTag.textContent = '';
-        liTag.appendChild(input);
-        input.focus();
-        const deleteIcon = divItem.querySelector('.delete-icon');
-        if (deleteIcon) { // Add a null check before removing the 'hide' class
-          deleteIcon.classList.remove('hide');
-        }
-        deleteIcon.addEventListener('click', () => {
-          const index = parseInt(liTag.getAttribute('data-index'), 10);
-          const itemIndex = itemData.findIndex((element) => element.index === index);
-          if (itemIndex !== -1) {
-            itemData.splice(itemIndex, 1);
-            for (let i = itemIndex; i < itemData.length; i += 1) {
-              itemData[i].index = i + 1;
+        if (liTag) {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.classList.add('dynInp');
+          input.value = liTag.textContent;
+          input.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+              liTag.textContent = input.value;
+              const index = parseInt(liTag.getAttribute('data-index'), 10);
+              const itemToUpdate = itemData.find((element) => element.index === index);
+              itemToUpdate.description = input.value;
+              localStorage.setItem('todoListItems', JSON.stringify(itemData));
             }
-            localStorage.setItem('todoListItems', JSON.stringify(itemData));
-            display(); // Re-render the list
+          });
+          liTag.textContent = '';
+          liTag.appendChild(input);
+          input.focus();
+          const deleteIcon = divItem.querySelector('.delete-icon');
+          if (deleteIcon) { // Add a null check before removing the 'hide' class
+            deleteIcon.classList.remove('hide');
           }
-        });
-        divItem.classList.remove('test');  
-      }
-  });
+          deleteIcon.addEventListener('click', () => {
+            const index = parseInt(liTag.getAttribute('data-index'), 10);
+            const itemIndex = itemData.findIndex((element) => element.index === index);
+            if (itemIndex !== -1) {
+              itemData.splice(itemIndex, 1);
+              for (let i = itemIndex; i < itemData.length; i += 1) {
+                itemData[i].index = i + 1;
+              }
+              localStorage.setItem('todoListItems', JSON.stringify(itemData));
+              display(); // Re-render the list
+            }
+          });
+          divItem.classList.remove('test');
+        }
+      });
     }
   });
 };
