@@ -48,7 +48,6 @@ li {
   float: right;
   position: absolute;
   right: 0;
-  border: 2px solid red;
 }
 
 .test::after {
