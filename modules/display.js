@@ -2,18 +2,18 @@ const listContainer = document.getElementById('ulId');
 const checkBox = document.createElement('input');
 const div = document.createElement('div');
 div.innerHTML = '<span class="delete-icon hide"><i class="fa fa-trash delEd"></i></span>';
-div.setAttribute('class', 'test');
+div.classList.add('test');
 checkBox.type = 'checkbox';
-checkBox.setAttribute('class', 'chbox');
+checkBox.classList.add('chbox');
 
 const display = () => {
   listContainer.innerHTML = ''; // Clear the list container
-  if (localStorage.length === 0) {
-    localStorage.clear();
-  }
 
-  const txt = localStorage.getItem('todoListItems');
-  const itemData = JSON.parse(txt);
+  let itemData = [];
+  if (localStorage.length !== 0) {
+    const txt = localStorage.getItem('todoListItems');
+    itemData = JSON.parse(txt);
+  }
 
   itemData.forEach((element) => {
     const section = document.createElement('section');
@@ -62,44 +62,48 @@ const display = () => {
   });
 
   const divIcon = document.querySelectorAll('.test');
-  divIcon.forEach((div) => {
-    div.addEventListener('click', (event) => {
-      const liTag = event.target.parentElement.querySelector('li');
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.setAttribute('class', 'dynInp');
-      input.value = liTag.textContent;
-      input.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-          liTag.textContent = input.value;
-          const index = parseInt(liTag.getAttribute('data-index'), 10);
-          const itemToUpdate = itemData.find((element) => element.index === index);
-          itemToUpdate.description = input.value;
-          localStorage.setItem('todoListItems', JSON.stringify(itemData));
-        }
-      });
-      liTag.textContent = '';
-      liTag.appendChild(input);
-      input.focus();
-      const deleteIcon = div.querySelector('.delete-icon');
-      deleteIcon.classList.remove('hide');
-      deleteIcon.addEventListener('click', () => {
-        const index = parseInt(liTag.getAttribute('data-index'), 10);
-        const itemIndex = itemData.findIndex((element) => element.index === index);
-        if (itemIndex !== -1) {
-          itemData.splice(itemIndex, 1);
-          for (let i = itemIndex; i < itemData.length; i += 1) {
-            itemData[i].index = i + 1;
+  divIcon.forEach((divItem) => {
+    if (divItem) { // Add a null check before adding the event listener
+      divItem.addEventListener('click', (event) => {
+        const liTag = event.target.parentElement.querySelector('li');
+        if(liTag){
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.classList.add('dynInp');
+        input.value = liTag.textContent;
+        input.addEventListener('keyup', (e) => {
+          if (e.key === 'Enter') {
+            liTag.textContent = input.value;
+            const index = parseInt(liTag.getAttribute('data-index'), 10);
+            const itemToUpdate = itemData.find((element) => element.index === index);
+            itemToUpdate.description = input.value;
+            localStorage.setItem('todoListItems', JSON.stringify(itemData));
           }
-          localStorage.setItem('todoListItems', JSON.stringify(itemData));
-          display(); // Re-render the list
+        });
+        liTag.textContent = '';
+        liTag.appendChild(input);
+        input.focus();
+        const deleteIcon = divItem.querySelector('.delete-icon');
+        if (deleteIcon) { // Add a null check before removing the 'hide' class
+          deleteIcon.classList.remove('hide');
         }
-      });
-      div.classList.remove('test');
-    });
+        deleteIcon.addEventListener('click', () => {
+          const index = parseInt(liTag.getAttribute('data-index'), 10);
+          const itemIndex = itemData.findIndex((element) => element.index === index);
+          if (itemIndex !== -1) {
+            itemData.splice(itemIndex, 1);
+            for (let i = itemIndex; i < itemData.length; i += 1) {
+              itemData[i].index = i + 1;
+            }
+            localStorage.setItem('todoListItems', JSON.stringify(itemData));
+            display(); // Re-render the list
+          }
+        });
+        divItem.classList.remove('test');  
+      }
   });
-
-  return 0;
+    }
+  });
 };
 
 export default display;

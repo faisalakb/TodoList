@@ -19,6 +19,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./modules/deleteItem.js":
+/*!*******************************!*\
+  !*** ./modules/deleteItem.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _display_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./display.js */ \"./modules/display.js\");\n\nvar del = function del() {\n  var checkboxes = document.querySelectorAll('input[type=\"checkbox\"]');\n  var txt = localStorage.getItem('todoListItems');\n  var items = JSON.parse(txt);\n  var updatedItems = [];\n  var count = 1;\n  for (var i = 0; i < checkboxes.length; i += 1) {\n    if (!checkboxes[i].checked) {\n      items[i].index = count;\n      updatedItems.push(items[i]);\n      count += 1;\n    }\n  }\n  localStorage.setItem('todoListItems', JSON.stringify(updatedItems));\n  (0,_display_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (del);\n\n//# sourceURL=webpack://todo_list/./modules/deleteItem.js?");
+
+/***/ }),
+
 /***/ "./modules/display.js":
 /*!****************************!*\
   !*** ./modules/display.js ***!
@@ -35,7 +45,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_addItem_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/addItem.js */ \"./modules/addItem.js\");\n/* harmony import */ var _modules_display_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/display.js */ \"./modules/display.js\");\n\n\n\nvar todoList = [];\n(0,_modules_addItem_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(todoList);\n(0,_modules_display_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n\n//# sourceURL=webpack://todo_list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_addItem_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/addItem.js */ \"./modules/addItem.js\");\n/* harmony import */ var _modules_deleteItem_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/deleteItem.js */ \"./modules/deleteItem.js\");\n/* harmony import */ var _modules_display_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modules/display.js */ \"./modules/display.js\");\n\n\n\n\nvar todoList = [];\n(0,_modules_addItem_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(todoList);\nvar clsBtn = document.getElementById('clsBtn');\nclsBtn.addEventListener('click', function () {\n  (0,_modules_deleteItem_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(todoList);\n});\n(0,_modules_display_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n\n//# sourceURL=webpack://todo_list/./src/index.js?");
 
 /***/ }),
 
