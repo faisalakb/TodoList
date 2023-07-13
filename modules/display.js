@@ -83,11 +83,11 @@ const display = () => {
       input.focus();
       const deleteIcon = div.querySelector('.delete-icon');
       deleteIcon.classList.remove('hide');
-      deleteIcon.addEventListener('click', (e) => {
+      deleteIcon.addEventListener('click', () => {
         const index = parseInt(liTag.getAttribute('data-index'), 10);
         const itemIndex = itemData.findIndex((element) => element.index === index);
         if (itemIndex !== -1) {
-          itemData.splice(e.itemIndex, 1);
+          itemData.splice(itemIndex, 1);
           for (let i = itemIndex; i < itemData.length; i += 1) {
             itemData[i].index = i + 1;
           }
