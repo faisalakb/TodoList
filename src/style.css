@@ -43,7 +43,6 @@ li {
 }
 
 .test {
-  
   display: inline-block;
   float: right;
   position: absolute;
@@ -64,7 +63,7 @@ li {
   margin-top: -35px;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
