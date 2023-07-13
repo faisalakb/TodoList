@@ -1,7 +1,7 @@
 const listContainer = document.getElementById('ulId');
 const checkBox = document.createElement('input');
 const div = document.createElement('div');
-
+div.innerHTML = '<span class="delete-icon hide"><i class="fa fa-trash delEd"></i></span>';
 div.setAttribute('class', 'test');
 checkBox.type = 'checkbox';
 checkBox.setAttribute('class', 'chbox');
@@ -27,7 +27,7 @@ const display = () => {
     section.appendChild(checkBox.cloneNode(true));
     section.appendChild(liTag);
     section.appendChild(div.cloneNode(true));
-    section.innerHTML += '<br>';
+    section.innerHTML += '<br><br>';
 
     listContainer.appendChild(section);
 
@@ -67,6 +67,7 @@ const display = () => {
       const liTag = event.target.parentElement.querySelector('li');
       const input = document.createElement('input');
       input.type = 'text';
+      input.setAttribute('class', 'dynInp');
       input.value = liTag.textContent;
       input.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
@@ -77,10 +78,24 @@ const display = () => {
           localStorage.setItem('todoListItems', JSON.stringify(itemData));
         }
       });
-
       liTag.textContent = '';
       liTag.appendChild(input);
       input.focus();
+      const deleteIcon = div.querySelector('.delete-icon');
+      deleteIcon.classList.remove('hide');
+      deleteIcon.addEventListener('click', (e) => {
+        const index = parseInt(liTag.getAttribute('data-index'), 10);
+        const itemIndex = itemData.findIndex((element) => element.index === index);
+        if (itemIndex !== -1) {
+          itemData.splice(e.itemIndex, 1);
+          for (let i = itemIndex; i < itemData.length; i += 1) {
+            itemData[i].index = i + 1;
+          }
+          localStorage.setItem('todoListItems', JSON.stringify(itemData));
+          display(); // Re-render the list
+        }
+      });
+      div.classList.remove('test');
     });
   });
 
