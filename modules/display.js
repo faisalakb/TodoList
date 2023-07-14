@@ -1,11 +1,11 @@
 const listContainer = document.getElementById('ulId');
 const checkBox = document.createElement('input');
 const div = document.createElement('div');
+const refres = document.getElementById('refres');
 div.innerHTML = '<span class="delete-icon hide"><i class="fa fa-trash delEd"></i></span>';
 div.classList.add('test');
 checkBox.type = 'checkbox';
 checkBox.classList.add('chbox');
-
 const display = () => {
   listContainer.innerHTML = ''; // Clear the list container
 
@@ -22,6 +22,9 @@ const display = () => {
     const liTag = document.createElement('li');
     const text = document.createTextNode(element.description);
     liTag.setAttribute('data-index', element.index);
+    if (element.completed === true) {
+      liTag.classList.add('completed');
+    }
     liTag.appendChild(text);
 
     section.appendChild(checkBox.cloneNode(true));
@@ -53,11 +56,18 @@ const display = () => {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
       const li = checkbox.closest('section').querySelector('li');
-      if (checkbox.checked) {
-        li.classList.add('completed');
-      } else {
-        li.classList.remove('completed');
-      }
+      const liId = parseInt(li.getAttribute('data-index'), 10);
+      const completed = checkbox.checked;
+
+      li.classList.toggle('completed', completed);
+
+      itemData.forEach((item) => {
+        if (item.index === liId) {
+          item.completed = completed;
+        }
+      });
+
+      localStorage.setItem('todoListItems', JSON.stringify(itemData));
     });
   });
 
@@ -103,6 +113,15 @@ const display = () => {
         }
       });
     }
+  });
+  refres.onclick = () => {
+    window.location.reload();
+  };
+  refres.addEventListener('mouseover', () => {
+    refres.classList.add('fa-spin');
+  });
+  refres.addEventListener('mouseout', () => {
+    refres.classList.remove('fa-spin');
   });
 };
 

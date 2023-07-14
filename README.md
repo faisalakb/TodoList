@@ -45,11 +45,12 @@ GitHub & Visual Studio Code
 
 ### Key Features <a name="key-features"></a>
 
-- Add todo's
-- Delete todo's
-- Update todo's
-- Save previously loaded information
-- Single click to clear all todo's list
+- Add todo's.
+- Delete todo's.
+- Update todo's.
+- Save previously loaded information.
+- Single click to clear all todo's list.
+- delete individual todo as well.
 - Enter button to be able to add todo's.
 - Use import, export, modules to simplify the code
 - use webpack for smooth working
