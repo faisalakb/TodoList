@@ -56,28 +56,18 @@ const display = () => {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
       const li = checkbox.closest('section').querySelector('li');
-      let i = 0;
-      if (checkbox.checked) {
-        li.classList.add('completed');
-        const liId = parseInt(li.getAttribute('data-index'), 10);
-        while (i < itemData.length) {
-          if (liId === itemData[i].index) {
-            itemData[i].completed = true;
-            localStorage.setItem('todoListItems', JSON.stringify(itemData));
-          }
-          i += 1;
+      const liId = parseInt(li.getAttribute('data-index'), 10);
+      const completed = checkbox.checked;
+
+      li.classList.toggle('completed', completed);
+
+      itemData.forEach((item) => {
+        if (item.index === liId) {
+          item.completed = completed;
         }
-      } else {
-        li.classList.remove('completed');
-        const liId = parseInt(li.getAttribute('data-index'), 10);
-        while (i < itemData.length) {
-          if (liId === itemData[i].index) {
-            itemData[i].completed = false;
-            localStorage.setItem('todoListItems', JSON.stringify(itemData));
-          }
-          i += 1;
-        }
-      }
+      });
+
+      localStorage.setItem('todoListItems', JSON.stringify(itemData));
     });
   });
 
