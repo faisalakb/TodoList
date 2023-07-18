@@ -1,24 +1,18 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-
-module.exports = {
-  entry: './src/index.js',
-  devServer: {
-    static: './dist',
+const HtmlWebpackPlugin = require('html-webpack-plugin');module.exports = {
+  mode: 'development',
+  entry: {
+    index: './src/index.js',
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: './src/index.html',
-  })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
   output: {
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash:8].js',
-    sourceMapFilename: '[name].[hash:8].map',
-    chunkFilename: '[id].[hash:8].js',
     clean: true,
-    publicPath: '/',
-  },
-  optimization: {
-    runtimeChunk: 'single',
   },
   module: {
     rules: [
@@ -26,25 +20,6 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
     ],
   },
-  mode: 'development',
 };
