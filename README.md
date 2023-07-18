@@ -118,11 +118,7 @@ To be deployed soon.
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add Remove items**
-- [ ] **with single remove all list**
-- [ ] **Update items**
-- [ ] **Apply webpack**
-- [ ] **Apply HTML,CSS & JS Linters**
+- [ ] **Make it more interactive**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
