@@ -59,9 +59,8 @@ GitHub & Visual Studio Code
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Live Demo <a name="https://faisalakb.github.io/TodoList/dist/"></a>
 
-- [Live Demo coming soon]
 
 <p align="right">(<a href="https://github.com/faisalakb/TodoList">back to top</a>)</p>
 
@@ -121,6 +120,9 @@ To be deployed soon.
 
 - [ ] **Add Remove items**
 - [ ] **with single remove all list**
+- [ ] **Update items**
+- [ ] **Apply webpack**
+- [ ] **Apply HTML,CSS & JS Linters**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
