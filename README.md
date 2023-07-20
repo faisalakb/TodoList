@@ -54,6 +54,7 @@ GitHub & Visual Studio Code
 - Enter button to be able to add todo's.
 - Use import, export, modules to simplify the code
 - use webpack for smooth working
+- Add unit tests for Add and delete items.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
