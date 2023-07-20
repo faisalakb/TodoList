@@ -7,8 +7,6 @@ div.classList.add('test');
 checkBox.type = 'checkbox';
 checkBox.classList.add('chbox');
 
-
-
 const display = () => {
   if (!listContainer) {
     return;
