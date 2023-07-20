@@ -3,7 +3,7 @@ import display from '../modules/display.js';
 function setupLocalStorage(itemData) {
   localStorage.setItem('todoListItems', JSON.stringify(itemData));
 }
-
+// create to do list to mock edit test
 function createItem(index, description, completed) {
   return { index, description, completed };
 }
