@@ -6,9 +6,14 @@ div.innerHTML = '<span class="delete-icon hide"><i class="fa fa-trash delEd"></i
 div.classList.add('test');
 checkBox.type = 'checkbox';
 checkBox.classList.add('chbox');
-const display = () => {
-  listContainer.innerHTML = ''; // Clear the list container
 
+
+
+const display = () => {
+  if (!listContainer) {
+    return;
+  }
+  listContainer.innerHTML = ''; // Clear the list container
   let itemData = [];
   if (localStorage.length !== 0) {
     const txt = localStorage.getItem('todoListItems');
@@ -73,7 +78,7 @@ const display = () => {
 
   const divIcon = document.querySelectorAll('.test');
   divIcon.forEach((divItem) => {
-    if (divItem) { // Add a null check before adding the event listener
+    if (divItem) {
       divItem.addEventListener('click', (event) => {
         const liTag = event.target.parentElement.querySelector('li');
         if (liTag) {
@@ -94,7 +99,7 @@ const display = () => {
           liTag.appendChild(input);
           input.focus();
           const deleteIcon = divItem.querySelector('.delete-icon');
-          if (deleteIcon) { // Add a null check before removing the 'hide' class
+          if (deleteIcon) {
             deleteIcon.classList.remove('hide');
           }
           deleteIcon.addEventListener('click', () => {
