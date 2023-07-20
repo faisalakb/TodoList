@@ -33,15 +33,13 @@ describe('Ensure the correct item is deleted from the todo list', () => {
 
       // Act
       const deleteIcons = document.querySelectorAll('.delete-icon');
-<<<<<<< HEAD
-      expect(deleteIcons.length).toBe(2); // Ensure two delete icons are displayed
 
-      deleteIcons[1].click(); // Simulate clicking the delete icon of the second item
-=======
       expect(deleteIcons.length).toBe(2);
 
       deleteIcons[1].click();
->>>>>>> 5640214b7679d07a96b29bc7bd33d75f41c5be4a
+      expect(deleteIcons.length).toBe(2);
+
+      deleteIcons[1].click();
 
       // Assert
       const updatedItemData = [
@@ -49,7 +47,6 @@ describe('Ensure the correct item is deleted from the todo list', () => {
       ];
       expect(localStorageMock.setItem).toHaveBeenCalledWith('todoListItems', JSON.stringify(updatedItemData));
 
-      // Ensure the correct item (second item) has been removed from the list
       const remainingListItems = document.querySelectorAll('li');
       expect(remainingListItems[1].textContent).toBe('Item 1');
     });
